@@ -43,7 +43,7 @@ int main(){
 }
 
 void print_column(int **matrix, int rows, int cols){
-	int i, j, zeros = 0, number = cols, index = -1;
+	int i, j, k, zeros = 0, number = cols, index = -1;
 	
 	for(i = 0; i < cols; i++){
 		for(j = 0;j < rows; j++){
@@ -56,7 +56,13 @@ void print_column(int **matrix, int rows, int cols){
 			zeros = 0;
 			index = i;
 		}
-		else zeros = 0;
+		else if(zeros == 0){
+			printf("The column number %d is zeroless\n",i);
+			for(k = 0; k < rows; k++){
+				printf("[%d]\n", matrix[k][i]);
+			}
+			printf("\n\n");
+		}
 	}
 
 	if(index == -1){
