@@ -43,7 +43,7 @@ int main(){
 }
 
 void print_column(int **matrix, int rows, int cols){
-	int i, j, k, zeros = 0, number = cols, index = -1;
+	int i, j, k, zeros = 0, index = -1;
 	
 	for(i = 0; i < cols; i++){
 		for(j = 0;j < rows; j++){
@@ -52,28 +52,19 @@ void print_column(int **matrix, int rows, int cols){
 			}
 		}
 		if(zeros > index && zeros != 0){
-			index = zeros;
 			zeros = 0;
-			index = i;
 		}
 		else if(zeros == 0){
-			printf("The column number %d is zeroless\n",i);
+			index = i;
+			printf("The column number %d is zeroless\n",index);
 			for(k = 0; k < rows; k++){
 				printf("[%d]\n", matrix[k][i]);
 			}
 			printf("\n\n");
 		}
 	}
-
+	
 	if(index == -1){
-		printf("There is no zero in the matrix\n");
+		printf("There\'s no such a column in the matrix that has no zero.\n");
 	}
-
-	else{
-		printf("Column no %d has the most numbers of zeros\n", index);
-		for(i = 0; i < rows; i++){
-			printf("%d\n",matrix[i][index]);
-		}
-	}
-
 }
